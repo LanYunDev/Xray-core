@@ -53,7 +53,7 @@ func Dial(ctx context.Context, dest net.Destination, streamSettings *internet.Me
 			if mitmAlpn11 {
 				tlsConfig.NextProtos[0] = "http/1.1"
 			} else {
-				tlsConfig.NextProtos = nil
+				tlsConfig.NextProtos = []string{"h2", "http/1.1"}
 			}
 		}
 		if fingerprint := tls.GetFingerprint(config.Fingerprint); fingerprint != nil {
